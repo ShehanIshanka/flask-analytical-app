@@ -34,6 +34,12 @@ format: #format files
 lint:
 	./venv/bin/flake8 .
 
+.PHONY: test-unit
+test-unit:
+	PYTHONPATH=. \
+	    ./venv/bin/pytest \
+		tests/unit/
+
 .PHONY: clean-app
 clean-app:
 	rm -rf app-data venv
