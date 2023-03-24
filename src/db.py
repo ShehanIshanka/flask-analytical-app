@@ -1,15 +1,18 @@
 import os
 
 import pandas as pd
-from sqlalchemy import Engine
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, Engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import Session, sessionmaker
 
 Base = declarative_base()
 
 
 def init_db() -> Engine:
+    """
+    Initialize the DB
+    :return: None
+    """
     db_dir: str = os.path.join("./app-data", "db")
     os.makedirs(db_dir, exist_ok=True)
 
@@ -20,6 +23,12 @@ def init_db() -> Engine:
 
 
 def load_data(engine: Engine, data_dir: str) -> None:
+    """
+    Load dat from csv files
+    :param engine: DB engine
+    :param data_dir: Data directory
+    :return: None
+    """
     tables = [
         "orders",
         "order_lines",
@@ -35,5 +44,10 @@ def load_data(engine: Engine, data_dir: str) -> None:
 
 
 def get_session(engine: Engine) -> Session:
-    Session = sessionmaker(bind=engine)
-    return Session()
+    """
+    Retrieve DB session
+    :param engine: DB Engine
+    :return: DB Session
+    """
+    session = sessionmaker(bind=engine)
+    return session()

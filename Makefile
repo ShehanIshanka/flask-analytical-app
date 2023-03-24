@@ -9,7 +9,6 @@ setup: venv
 .PHONY: run
 run:
 	./venv/bin/python3 -m src.app
-	# ./venv/bin/flask --app src.app run
 
 .PHONY: setup-test
 setup-test: venv setup
