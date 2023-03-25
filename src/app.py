@@ -5,7 +5,7 @@ from datetime import date
 from flask import Flask, jsonify, request, Response
 from sqlalchemy import Engine
 from sqlalchemy.orm import Session
-from src.analytics import get_total_number_of_customers, get_total_number_of_items
+from src.analytics import get_order_analytics, OrderAnalytics
 from src.db import get_session, init_db, load_data
 
 
@@ -30,10 +30,8 @@ def get_analytics() -> Response:
     if day is None:
         day = str(date.today())
 
-    return jsonify(
-        customers=get_total_number_of_customers(session=session, day=day),
-        items=get_total_number_of_items(session=session, day=day),
-    )
+    payload: OrderAnalytics = get_order_analytics(session=session, day=day)
+    return jsonify(payload._asdict())
 
 
 if __name__ == "__main__":

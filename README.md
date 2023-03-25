@@ -41,8 +41,20 @@ curl --location 'http://localhost:5000/analytics' \
 #### Output
 ```json
 {
-    "customers": 9,
-    "items": 2895
+    "commissions": {
+        "order_average": 2235862.332815922,
+        "promotions": {
+            "1": 5852160.0,
+            "3": 720612.0,
+            "4": 222168.94385922147
+        },
+        "total": 22358623.32815922
+    },
+    "customers": 10,
+    "discount_rate_avg": 1.5928759968214223,
+    "items": 3082,
+    "order_total_avg": 16499829.576384336,
+    "total_discount_amount": 150457385.3559189
 }
 ```
 

@@ -41,7 +41,7 @@ class Promotions(Base):
     description = Column(VARCHAR(40))
 
 
-class Product_promotions(Base):
+class ProductPromotions(Base):
     __tablename__ = "product_promotions"
     __table_args__ = {"sqlite_autoincrement": True}
     date = Column(DateTime)
